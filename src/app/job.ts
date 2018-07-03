@@ -1,11 +1,10 @@
 export class Job {
-    id: number;
-    job_name: string;
-    // getdata_day: number;
-    data_type: string;
-    // data_sub_type: string;
-    last_starttime: string;
-    // last_endtime: string;
-    last_job_status: string;
-    // last_tx_dt: string;
+  Job_Name: string;
+  GetData_day: string;
+  Data_Type: string;
+  Data_Sub_Type: string;
+  Last_StartTime: string;
+  Last_EndTime: string;
+  Last_Job_Status: string;
+  Last_Tx_Dt: string;
 }

@@ -1,11 +1,14 @@
 <div *ngIf="job">
   <mat-list>
-    <mat-list-item>Job ID: {{job.id}}</mat-list-item>
+    <mat-list-item>Job Name: {{job.Job_Name}}</mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>Job Name: {{job.job_name}}</mat-list-item>
+    <mat-list-item>Job GetData_day: {{job.GetData_day}}</mat-list-item>
+    <mat-list-item>Job Data_Type: {{job.Data_Type}}</mat-list-item>
+    <mat-list-item>Job Data_Sub_Type: {{job.Data_Sub_Type}}</mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>Job Last Time: {{job.last_starttime}}</mat-list-item>
-    <mat-list-item>Job Status: {{job.last_job_status}}</mat-list-item>
+    <mat-list-item>Job Last_StartTime: {{job.Last_StartTime}}</mat-list-item>
+    <mat-list-item>Job Last_Tx_Dt: {{job.Last_Tx_Dt}}</mat-list-item>
+    <mat-list-item>Job Last_EndTime: {{job.Last_EndTime}}</mat-list-item>
   </mat-list>
   <button (click)="goBack()">go back</button>
 </div>
