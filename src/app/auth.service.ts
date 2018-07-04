@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
+import {observable, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {tap, catchError} from 'rxjs/operators';
 
@@ -30,8 +30,17 @@ export class AuthService {
   }
 
   loginAuth(loginUser: string): Observable<boolean> {
-    this.isLoggedIn = true;
-    return of(true);
+    return this.http.post(this.loginUrl, loginUser, httpOptions).pipe(
+      res => {
+        if (res['Result'] !== 'OK') {
+          this.isLoggedIn = true;
+          return of(true);
+        } else {
+          return of(false);
+        }
+      }
+    )
+    ;
   }
 
 }

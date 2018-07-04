@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   uid: string;
   pwd: string;
 
+  message: string;
+
   constructor(public authService: AuthService, public router: Router) {
   }
 
@@ -30,13 +32,15 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.uid && this.pwd) {
-      this.authService.loginAuth('').subscribe(()=> {
+      this.message = 'Trying to log in ...';
+      this.authService.loginAuth('').subscribe(() => {
         if (this.authService.isLoggedIn) {
-          let redirect = this.authService.redirectUrl ?
+          const redirect = this.authService.redirectUrl ?
             this.authService.redirectUrl : '';
+          console.log('this: ', redirect);
           this.router.navigate([redirect]);
         }
-      })
+      });
     }
   }
 }
