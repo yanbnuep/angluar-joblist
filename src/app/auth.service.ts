@@ -32,7 +32,7 @@ export class AuthService {
   loginAuth(loginUser: string): Observable<boolean> {
     return this.http.post(this.loginUrl, loginUser, httpOptions).pipe(
       res => {
-        if (res['Result'] !== 'OK') {
+        if (res['Result'] === 'OK') {
           this.isLoggedIn = true;
           return of(true);
         } else {
