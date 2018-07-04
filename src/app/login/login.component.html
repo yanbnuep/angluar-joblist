@@ -2,18 +2,18 @@
   <mat-grid-list cols="1" rowHeight="100px">
     <mat-grid-tile>
       <mat-form-field>
-        <input matInput placeholder="User Name">
+        <input matInput placeholder="User Name" (keyup)="onUidKey($event)">
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-form-field>
-        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" (keyup)="onPwdKey($event)">
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile>
       <div class="button-row">
-        <button mat-raised-button color="primary"> Login </button>
+        <button mat-raised-button color="primary" (click)="onSubmit()"> Login </button>
       </div>
     </mat-grid-tile>
   </mat-grid-list>

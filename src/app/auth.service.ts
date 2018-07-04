@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
+import {tap, catchError} from 'rxjs/operators';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'})
 };
 
 interface AuthMsg {
@@ -12,17 +13,15 @@ interface AuthMsg {
   SID: string;
 }
 
-interface LoginUser {
-  uid: string;
-  pwd: string;
-}
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  private loginUrl = '';
+  private loginUrl = 'http://app.airmacau.com.mo/etl/api/login.ashx';
+  isLoggedIn = false;
+  redirectUrl: string;
 
   constructor(
     private http: HttpClient
@@ -30,19 +29,9 @@ export class AuthService {
 
   }
 
-  loginAuth(loginUser: LoginUser) {
-    this.http.post(this.loginUrl, loginUser, httpOptions).subscribe(
-      (val) => {
-        console.log('POST successful return', val);
-      },
-      response => {
-        console.log('post call in error', response);
-      },
-      () => {
-        console.log('the post observable is completed.');
-      }
-    );
+  loginAuth(loginUser: string): Observable<boolean> {
+    this.isLoggedIn = true;
+    return of(true);
   }
-
 
 }
