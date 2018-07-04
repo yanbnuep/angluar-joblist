@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 
@@ -30,14 +30,19 @@ export class AuthService {
 
   }
 
-  loginAuth(loginUser: LoginUser): Observable<AuthMsg> {
-    return this.http.post<AuthMsg>(this.loginUrl, loginUser, httpOptions)
-      .pipe(
-        catchError(this.handleError())
-      );
+  loginAuth(loginUser: LoginUser) {
+    this.http.post(this.loginUrl, loginUser, httpOptions).subscribe(
+      (val) => {
+        console.log('POST successful return', val);
+      },
+      response => {
+        console.log('post call in error', response);
+      },
+      () => {
+        console.log('the post observable is completed.');
+      }
+    );
   }
 
-  handleError = info => {
-    console.log(info);
-  }
+
 }
