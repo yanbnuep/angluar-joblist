@@ -33,7 +33,8 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.uid && this.pwd) {
       this.message = 'Trying to log in ...';
-      this.authService.loginAuth('').subscribe(() => {
+      const loginuser = 'uid=' + this.uid + '&pwd=' + this.pwd;
+      this.authService.loginAuth(loginuser).subscribe(() => {
         if (this.authService.isLoggedIn) {
           const redirect = this.authService.redirectUrl ?
             this.authService.redirectUrl : '';

@@ -9,8 +9,8 @@ import {catchError, map, tap} from 'rxjs/operators';
 })
 export class JobService {
 
-  private jobsUrl = 'http://app.airmacau.com.mo/etl/api/ejob_list.ashx';  // URL to web api
-  private queUrl = 'http://app.airmacau.com.mo/etl/api/ejob_query.ashx';
+  private jobsUrl = 'https://app.airmacau.com.mo:8080/etl/api/ejob_list.ashx';  // URL to web api
+  private queUrl = 'https://app.airmacau.com.mo:8080/etl/api/ejob_query.ashx';
 
   constructor(
     private http: HttpClient
