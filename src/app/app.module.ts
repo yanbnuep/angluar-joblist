@@ -10,6 +10,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import {NavMenuComponent} from './nav-menu/nav-menu.component';
 import {MaterialModule} from './material.module';
+import { SpinnerCoverComponent } from './spinner-cover/spinner-cover.component';
+import { MessageComponent } from './message/message.component';
 
 // import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 // import {InMemoryDataService} from './in-memory-data.service';
@@ -21,6 +23,8 @@ import {MaterialModule} from './material.module';
     JobDetailComponent,
     LoginComponent,
     NavMenuComponent,
+    SpinnerCoverComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,

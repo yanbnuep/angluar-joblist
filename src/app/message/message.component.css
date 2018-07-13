@@ -1,0 +1,11 @@
+.message {
+  display: block;
+  text-align: center;
+}
+.message .alert {
+  display: inline-block;
+  margin: 0 auto;
+  color: crimson;
+  font-size: 15px;
+  text-align: left;
+}

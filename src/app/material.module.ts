@@ -10,6 +10,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   imports: [
     MatFormFieldModule,
@@ -23,7 +24,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatTableModule,
     MatMenuModule,
     MatDividerModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatFormFieldModule,
@@ -38,6 +40,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatMenuModule,
     MatDividerModule,
     MatToolbarModule,
+    MatProgressSpinnerModule,
   ],
 })
 

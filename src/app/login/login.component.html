@@ -1,14 +1,14 @@
 <div class="login-form">
-  <p>{{message}}</p>
+  <app-message [alert]="true"></app-message>
   <mat-grid-list cols="1" rowHeight="100px">
     <mat-grid-tile>
       <mat-form-field>
-        <input matInput placeholder="User Name" (keyup)="onUidKey($event)">
+        <input matInput placeholder="User Name" (keyup)="onUidKey($event)" required>
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-form-field>
-        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" (keyup)="onPwdKey($event)">
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" (keyup)="onPwdKey($event)" required>
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
     </mat-grid-tile>
@@ -19,3 +19,4 @@
     </mat-grid-tile>
   </mat-grid-list>
 </div>
+<app-spinner-cover [hidden]="spinnerHide"></app-spinner-cover>

@@ -2,20 +2,16 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   hide = true;
+  spinnerHide = true;
   uid: string;
   pwd: string;
-
-  message: string;
-
   constructor(public authService: AuthService, public router: Router) {
   }
 
@@ -32,9 +28,10 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.uid && this.pwd) {
-      this.message = 'Trying to log in ...';
       const loginuser = 'uid=' + this.uid + '&pwd=' + this.pwd;
+      this.spinnerHide = false;
       this.authService.loginAuth(loginuser).subscribe(() => {
+        this.spinnerHide = true;
         if (this.authService.isLoggedIn) {
           const redirect = this.authService.redirectUrl ?
             this.authService.redirectUrl : '';
