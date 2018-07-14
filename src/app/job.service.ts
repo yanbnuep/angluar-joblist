@@ -3,6 +3,7 @@ import {Job} from './job';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
+import {AuthService} from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,18 @@ export class JobService {
   private queUrl = 'https://app.airmacau.com.mo:8080/etl/api/ejob_query.ashx';
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private authService: AuthService
   ) {
   }
 
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+    // 'Access-Control-Allow-Credentials': 'true',
+  });
+
   getJobs(): Observable<Job[]> {
-    return this.http.get<Job[]>(this.jobsUrl)
+    return this.http.get<Job[]>(this.jobsUrl, {headers: this.headers, withCredentials: true})
       .pipe(
         tap(jobes => this.log(`fetched Jobs`)),
         catchError(this.handleError('getJobs', []))
@@ -56,5 +63,15 @@ export class JobService {
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
     console.log('JobService: ' + message);
+  }
+
+  fetchTest() {
+    fetch('https://app.airmacau.com.mo:8080/etl/api/ejob_list.ashx', {
+      method: 'GET',
+      headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'}),
+      body: 'ASP.NET_SessionId=' + this.authService.getCookieItem('SID'),
+      credentials: 'include'
+    })
+      .then(response => console.log('SUCCESS', response));
   }
 }

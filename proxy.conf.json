@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "http://mydomian.test/",
+    "secure": false
+  }
+}

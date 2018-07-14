@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRoute, ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {AuthService} from './auth.service';
-import {docCookies} from '../../node_modules/doc-cookies';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +19,7 @@ export class RouteGuardService implements CanActivate {
   }
 
   checkLogin(url: string): boolean {
-    console.log('sid', docCookies.getItem('SID'));
-    if (docCookies.getItem('SID')) {
+    if (this.authService.getCookieItem('SID')) {
       return true;
     }
     // Store the attempted URL for redirecting
